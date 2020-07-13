@@ -270,30 +270,30 @@ Aquí se describe el estandar para las consultas a las Api GET.
 
 #### select
 Atributos que se quieren obtener, pueden estar separados con comas. Si se omite se traerán todos.
-**&select=id,name**
+`&select=id,name`
 
 #### where
 Se puede filtrar por cualquier atributo y con formato MySql LIKE **&name=platan%**
-También se pueden hacer peticiones en formato eloquent con encodeURI() **where=[['name','LIKE','platan%']]** o
-**orWhere=[['name','LIKE','platan%'],['name','LIKE','manzan%']]**
+También se pueden hacer peticiones en formato eloquent con encodeURI() `where=[['name','LIKE','platan%']]` o
+`orWhere=[['name','LIKE','platan%'],['name','LIKE','manzan%']]`
 
 #### with
-Con with se pueden traer relaciones **&with=ingredients,translations**
+Con with se pueden traer relaciones `&with=ingredients,translations`
 
 #### groupBy
-**&groupBy=id**
+`&groupBy=id`
 
 #### groupBy
-**&orderBy=id**
+`&orderBy=id`
 
 #### limit
-**&limit=10**
+`&limit=10`
 
 #### offset
-**&offset=10**
+`&offset=10`
 
 #### aggr
-first, count, sum, max.. **&aggr=first**
+first, count, sum, max.. `&aggr=first`
 
 ### pluck
-Para obetener el array con el valor de una sola columna **&pluck=id**
+Para obetener el array con el valor de una sola columna `&pluck=id`
