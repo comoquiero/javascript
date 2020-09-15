@@ -11,9 +11,7 @@ En cambio se usan:
 
 Como norma general todas las variables son **const** hasta que typescript te alerte de que estamos reasignando una variable, en ese caso la cambiamos a **let**
 
-## 2. Es obligatorio tipar todo
-
-*Esto es realmente importante en el caso de Vue por typescript puede perderse y dejar de encontrar elementos dentro del componente.
+## 2. Es obligatorio tipar todos los métodos! Aunque parezca irrelevante, ayudas al resto a saber que hace ese método!
 
 Ejemplo de los tipados nativos más comunes
 ```
@@ -115,7 +113,7 @@ function add(obj): void {
 
 ### never
 
-Este tipado puede aparecer cuando según typescript el valor es imposible pero por lgún motivo necesitamos filtrarlo igualmente.
+Este tipado puede aparecer cuando según typescript el valor es imposible pero por algún motivo necesitamos filtrarlo igualmente.
 Por ejemplo la variable str nunca debería poder undefined:
 ```
 function(str: string) {
