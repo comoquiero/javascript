@@ -16,7 +16,7 @@ Puedes instalarlos a mano o por linea de compando:
 code --install-extension octref.**vetur**
 code --install-extension dbaeumer.**vscode-eslint**
 
-### PHP
+### PHP (DEPRECATED)
 code --install-extension bmewburn.**vscode-intelephense-client**
 code --install-extension TysonAndre.**php-phan**
 code --install-extension kokororin.**vscode-phpfmt**
@@ -39,15 +39,15 @@ La librería para hacer peticiones HTTP es axios. No se deben usar peticiones na
 
 #### jQuery
 
-Aunque es posible que jQuery todavía se esté usando en algun lugar del código, ya **NO** está perimitido.
+Si lo ves en el código, quítalo! La web-app te lo agradecerá y cargara más rápido!
 En cambio puedes buscar métodos equivalentes en **lodash** importados individualmente.
 
 ### Typescript
 
 #### Consideraciones generales:
-- NO está perimitido el uso de "var"
-- Se debe tipar todo lo posible
-- Todo objecto que tenga relación con una base de datos debe estar tipado
+- NO está perimitido el uso de "var".
+- Se tienen que tipar todos los métodos.
+- Todo objecto que tenga relación con una base de datos debe estar tipado.
 
 Si no lo sabes utilizar muy bien no te preocupes [leete el resumen de typescript](typescript.md), es muy fácil de usar en proyectos que ya están construidos.
 
@@ -106,7 +106,7 @@ src
 
 ### store
 
-En Como-Quiero **NO** usamos **Vuex**. No está diseñado ni para usar todo el potencial de Typescript ni para realmente usarlo de manera modular.
+En Como-Quiero **NO** usamos **Vuex**. No está diseñado ni para usar todo el potencial de Typescript ni para cargarlo de manera modular.
 
 En cambio usamos componentes Vue que mentienen toda la reactividad pero sin una vista asociada.
 Para las peticiones a la Api se utiliza **asycComputed** con el objetivo de cargar de manera reactiva contenido asíncrono.
@@ -114,7 +114,7 @@ Para las peticiones a la Api se utiliza **asycComputed** con el objetivo de carg
 ### Ejemplo de archivo .vue
 
 En el proyecto te vas a encontrar componentes Vue de este estilo.
-Es importante que entiendas todo lo que está ocurriendo aquí a la perfección:
+Es importante que entiendas todo lo que está ocurriendo aquí:
 ```
 <template>
   <div class="component--example">
@@ -200,16 +200,9 @@ export default Vue.extend({
 </script>
 
 <style>
-.component--example .recipename-missing {
-  color: red;
-}
-.component--example .recipename-loading {
-  color: grey;
-}
+
 </style>
 ```
-
-### Nuxt
 
 ## BACK-END
 
@@ -218,9 +211,33 @@ Su funcionamiento en general debe ser muy estandarizado y simple.
 
 ### Node
 
-Los nuevos desarrollos Backend se están realizando en Node, pero todavía se encuentran en proceso de cambio.
+Los nuevos desarrollos Backend se realizan en el API framework express.js de Node
 
-### PHP Laravel/Lumen
+#### Estructura
+
+La estructura esencial es la siguiente:
+
+```
+comoquiero
+└── api-v2
+    ├── src
+    │   ├── config
+    │   │   └── config.ts               #Variables de entorno
+    │   ├── controllers                 #Métodos a los que llama cada ruta de la Api
+    │   │   ├── UsersController.ts
+    │   │   ├── ...
+    │   │   └── findAll.ts              #Método genérido para hacer peticiones a la Api en 'sequelize'
+    │   ├── models                      #Modelos donde se relaciona la Api con la tabla de BD
+    │   │   ├── User.ts
+    │   │   └── ...
+    │   └── routes
+    │       └── index.ts                #Enrutador de las peticiones de la API a los controller's
+    ├── dist                            #Typescript compilado
+    │   └── ...
+    └── ...                             #Archivos de configuración varios
+```
+
+### PHP Laravel/Lumen (DEPRECATED)
 
 Lumen es un framewrok PHP más ligero y simplificado de Laravel, pensada para ser usada solo como Api.
 
@@ -297,3 +314,27 @@ first, count, sum, max.. `&aggr=first`
 
 ### pluck
 Para obetener el array con el valor de una sola columna `&pluck=id`
+
+
+## NPM
+
+### Requisitos pre-instalados
+
+- docker
+- docker-compose
+
+### Levantar proyecto
+
+PhpMyAdmin (para cargar el MySql en local):
+`npm run phpmyadmin`
+
+Api php + nuxt:
+`npm run dev`
+
+Api2 Node (en otra pestaña):
+`cd api-v2 && npm run dev`
+
+### Helpers
+
+Parar todos los dockers
+`npm run docker-stop-all`
