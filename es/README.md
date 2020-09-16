@@ -314,27 +314,3 @@ first, count, sum, max.. `&aggr=first`
 
 ### pluck
 Para obetener el array con el valor de una sola columna `&pluck=id`
-
-
-## NPM
-
-### Requisitos pre-instalados
-
-- docker
-- docker-compose
-
-### Levantar proyecto
-
-PhpMyAdmin (para cargar el MySql en local):
-`npm run phpmyadmin`
-
-Api php + nuxt:
-`npm run dev`
-
-Api2 Node (en otra pestaña):
-`cd api-v2 && npm run dev`
-
-### Helpers
-
-Parar todos los dockers
-`npm run docker-stop-all`
